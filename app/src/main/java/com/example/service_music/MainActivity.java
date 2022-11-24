@@ -2,6 +2,8 @@ package com.example.service_music;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "음악을 재생합니다", Toast.LENGTH_SHORT).show();
 
                 Log.e("메인 엑티티비","서비스 호출" );
+                fadeShow(play_btn,stop_btn );
             }
         });
 
@@ -43,9 +46,22 @@ public class MainActivity extends AppCompatActivity {
                 stopService(intent);
                 Toast.makeText(MainActivity.this, "음악을 중지합니다.", Toast.LENGTH_SHORT).show();
                 Log.e("메인 엑티티비","음악 멈춤" );
+                fadeShow(stop_btn, play_btn);
             }
         });
 
 
+    }
+
+    private void fadeShow(View gone, View visible){
+        visible.setVisibility(View.VISIBLE);
+        visible.setAlpha(0f);
+        visible.animate().alpha(1f).setDuration(600).setListener(null);
+        gone.animate().alpha(0f).setDuration(600).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                gone.setVisibility(View.GONE);
+            }
+        });
     }
 }

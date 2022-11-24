@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/play_btn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="음악 재생"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,14 +17,14 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
-        android:id="@+id/stop_btn"
-        android:layout_width="match_parent"
+        android:id="@+id/stop_btn" android:visibility="gone"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="음악 중지"
-        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/play_btn"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

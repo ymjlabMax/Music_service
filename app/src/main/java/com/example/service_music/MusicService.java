@@ -62,12 +62,15 @@ public class MusicService extends Service {
 
         startForeground(1, notification);
 
+        //주석 추가
+
 
 
         player = MediaPlayer.create(this, R.raw.music);
         player.setLooping(true);
         player.start();
-        return super.onStartCommand(intent, flags, startId);
+//        return super.onStartCommand(intent, flags, startId);
+        return START_STICKY;
     }
 
    private void createNotificationChannel(){
@@ -75,7 +78,7 @@ public class MusicService extends Service {
            NotificationChannel serviceChannel = new NotificationChannel(
                    CHANNEL_ID,
                    "Foreground Service Channel",
-                   NotificationManager.IMPORTANCE_DEFAULT
+                   NotificationManager.IMPORTANCE_HIGH
            );
 
            NotificationManager manager = getSystemService(NotificationManager.class);
